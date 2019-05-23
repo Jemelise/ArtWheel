@@ -1,0 +1,12 @@
+body {
+    font-family: Trebuchet MS;
+    background-color: rgb(255, 255, 204);
+    font-size: 20px;
+    color: rgb(153, 102, 0);
+}
+
+h1 {
+    color: rgb(204, 153, 0);
+    font-family: Franklin Gothic Medium;
+    text-align: center;
+}
