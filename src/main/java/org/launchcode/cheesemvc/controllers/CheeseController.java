@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
+// this is a common prefix as the base route
 @RequestMapping("cheese")
 public class CheeseController {
 
@@ -37,6 +38,20 @@ public class CheeseController {
         cheeses.put(cheeseName, cheeseDescription);
 
         // redirect to /cheese
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveCheeseForm(Model model) {
+        model.addAttribute("cheeses", cheeses);
+        return "cheese/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String displayRemoveCheeseForm(@RequestParam ArrayList<String> cheese) {
+        for(int i = 0; i < cheese.size(); i++) {
+            cheeses.remove(cheese.get(i));
+        }
         return "redirect:";
     }
 }
