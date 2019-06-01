@@ -19,8 +19,8 @@
         <tr><td><b>Name</b></td><td><b>Description</b></td></tr>
 <!--        this is an example of a for loop-->
     <tr th:each="cheese : ${cheeses}">
-        <td th:text="${cheese.key}">Key</td>
-        <td th:text="${cheese.value}">Value</td>
+        <td th:text="${cheese.getNameOfCheese()}">Key</td>
+        <td th:text="${cheese.getDescriptionOfCheese()}">Value</td>
     </tr>
     </table>
 
