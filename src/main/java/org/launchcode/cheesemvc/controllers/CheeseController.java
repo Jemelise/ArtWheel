@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Controller
@@ -14,7 +15,8 @@ import java.util.ArrayList;
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static ArrayList<Cheese> cheeses = new ArrayList<>();
+    private ArrayList<Cheese> cheeses = new ArrayList<>();
+
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -46,15 +48,18 @@ public class CheeseController {
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String displayRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
+        ArrayList<Cheese> cheesesToRemove = new ArrayList<Cheese>();
 
         for(String toRemove : cheeseList) {
             for(Cheese nomnom : cheeses) {
 
                 if (nomnom.getNameOfCheese().equals(toRemove)) {
-                    cheeses.remove(nomnom);
+                    cheesesToRemove.add(nomnom);
+
                 }
             }
         }
+        cheeses.removeAll(cheesesToRemove);
         return "redirect:";
     }
 }
