@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Controller
 // this is a common prefix as the base route
@@ -16,9 +15,7 @@ import java.util.HashMap;
 public class CheeseController {
 
     static ArrayList<Cheese> cheeses = new ArrayList<>();
-//    HashMap<String, String> cheeses = new HashMap<>();
 
-    // request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model) {
 
@@ -36,11 +33,8 @@ public class CheeseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@RequestParam String cheeseName, String cheeseDescription) {
         Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
-//        cheeses.put(cheeseName, cheeseDescription);
         cheeses.add(newCheese);
 
-
-        // redirect to /cheese
         return "redirect:";
     }
 
@@ -51,10 +45,15 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String displayRemoveCheeseForm(@RequestParam String cheese) {
-        for(Cheese nomnom : cheeses) {
-            nomnom.getNameOfCheese().equals(cheese);
-            cheeses.remove(nomnom);
+    public String displayRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
+
+        for(String toRemove : cheeseList) {
+            for(Cheese nomnom : cheeses) {
+
+                if (nomnom.getNameOfCheese().equals(toRemove)) {
+                    cheeses.remove(nomnom);
+                }
+            }
         }
         return "redirect:";
     }
