@@ -3,6 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <h1 th:text="${title}">Default Title</h1>
+<h2>Edit Cheese NAME (id=ID)</h2>
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -10,6 +11,7 @@
     Name: <input type="text" name="nameOfCheese" />
     Description: <input type="text" name="descriptionOfCheese" />
     <input type="submit" value="Add Cheese" />
+    <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
 </form>
 
 </body>

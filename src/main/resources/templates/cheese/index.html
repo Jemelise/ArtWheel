@@ -4,6 +4,7 @@
 <body>
     <h1 th:text="${title}">Default Title</h1>
     <nav th:replace="fragments :: navigation"></nav>
+<!--    <a th:href="@{'/cheese/edit' + ${cheese.cheeseId}}">edit</a>-->
     <p th:unless="${cheeses} and ${cheeses.size()}"> no cheese :(</p>
 
     <table>

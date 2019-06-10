@@ -4,6 +4,7 @@ import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.CheeseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +33,7 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddCheeseForm(@RequestParam String cheeseName, String cheeseDescription) {
-        Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+    public String processAddCheeseForm(@ModelAttribute Cheese newCheese) {
         CheeseData.add(newCheese);
         return "redirect:";
     }
@@ -44,22 +44,6 @@ public class CheeseController {
         return "cheese/remove";
     }
 
-//    @RequestMapping(value = "remove", method = RequestMethod.POST)
-////    public String displayRemoveCheeseForm(@RequestParam ArrayList<String> cheeseList) {
-////        ArrayList<Cheese> cheesesToRemove = new ArrayList<Cheese>();
-////
-////        for(String toRemove : cheeseList) {
-////            for(Cheese nomnom : cheeses) {
-////
-////                if (nomnom.getNameOfCheese().equals(toRemove)) {
-////                    cheesesToRemove.add(nomnom);
-////                }
-////            }
-////        }
-////        cheeses.removeAll(cheesesToRemove);
-////        return "redirect:";
-////    }
-
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String displayRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
@@ -68,4 +52,15 @@ public class CheeseController {
         }
         return "redirect:";
     }
+
+//    @RequestMapping(value = "edit", method = RequestMethod. )
+//    public String displayEditForm(Model model, @PathVariable int cheeseId) {
+//        model.addAttribute("", CheeseData.);
+//        return "redirect:";
+//    }
+//
+//    @RequestMapping(value = "edit", method = RequestMethod. )
+//    public String processEditForm(int cheeseId, String name, String description) {
+//
+//    }
 }

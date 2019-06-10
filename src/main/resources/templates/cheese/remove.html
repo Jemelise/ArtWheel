@@ -7,10 +7,6 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post" >
-<!--    <div th:each="cheese : ${cheeses}">-->
-<!--    <p th:text="${cheese.getNameOfCheese()}"></p>-->
-<!--        <input type="checkbox"  name="cheeseList" th:value="${cheese.getNameOfCheese()}"/>-->
-<!--    </div>-->
     <div th:each="cheese : ${cheeses}" class="checkbox">
         <input type="checkbox" name="cheeseIds" th:value="${cheese.cheeseId}" th:id="${cheese.cheeseId}"/>
         <label th:for="${cheese.cheeseId}" th:text="${cheese.nameOfCheese}"></label>
