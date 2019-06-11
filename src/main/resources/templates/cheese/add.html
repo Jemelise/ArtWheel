@@ -6,9 +6,13 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post">
-    Name: <input type="text" name="nameOfCheese" />
-    Description: <input type="text" name="descriptionOfCheese" />
+<form method="post" th:object="${cheese}">
+    <label th:for="name">Name:</label>
+    <input th:field="*{nameOfCheese}" />
+    <span th:errors="*{nameOfCheese}" class="error"></span>
+    <label th:for="description">Description:</label>
+    <input type="text" th:field="*{descriptionOfCheese}" />
+    <span th:errors="*{descriptionOfCheese}" class="error"></span>
     <input type="submit" value="Add Cheese" />
 </form>
 
