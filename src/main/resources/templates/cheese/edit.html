@@ -3,13 +3,13 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <h1 th:text="${title}">Default Title</h1>
-<h2 th:text="'Edit Cheese' + ${cheese.nameOfCheese} + '(id=' + '${cheeseId}+)'"></h2>
+<h2 th:text="'Edit Cheese ' + ${cheese.nameOfCheese} + '(id=' + ${cheeseId}+')'"></h2>
 
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post" action="/cheese/edit">
-    Name: <input type="text" name="nameOfCheese" />
-    Description: <input type="text" name="descriptionOfCheese" />
+    Name: <input type="text" th:value="${cheese.nameOfCheese}" name="nameOfCheese" />
+    Description: <input type="text" th:value="${cheese.descriptionOfCheese}" name="descriptionOfCheese" />
     <input type="submit" value="Edit Cheese" />
     <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
 </form>

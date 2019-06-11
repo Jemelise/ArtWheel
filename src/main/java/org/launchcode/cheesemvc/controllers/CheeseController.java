@@ -6,11 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 @Controller
-// this is a common prefix as the base route
 @RequestMapping("cheese")
 public class CheeseController {
 
@@ -58,11 +54,10 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String processEditForm(int cheeseId, String name, String description) {
+    public String processEditForm(int cheeseId, String nameOfCheese, String descriptionOfCheese) {
         Cheese c = CheeseData.getById(cheeseId);
-        c.getNameOfCheese(name);
-        c.getDescriptionOfCheese(description);
+        c.setNameOfCheese(nameOfCheese);
+        c.setDescriptionOfCheese(descriptionOfCheese);
         return "redirect:";
-
     }
 }
