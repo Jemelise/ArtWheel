@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 @Controller
-// this is a common prefix as the base route
 @RequestMapping("cheese")
 public class CheeseController {
 
@@ -48,6 +45,7 @@ public class CheeseController {
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveCheeseForm(Model model) {
         model.addAttribute("cheeses", CheeseData.getAll());
+        model.addAttribute("title", "Remove Cheese");
         return "cheese/remove";
     }
 
@@ -59,15 +57,4 @@ public class CheeseController {
         }
         return "redirect:";
     }
-
-//    @RequestMapping(value = "edit", method = RequestMethod. )
-//    public String displayEditForm(Model model, @PathVariable int cheeseId) {
-//        model.addAttribute("", CheeseData.);
-//        return "redirect:";
-//    }
-//
-//    @RequestMapping(value = "edit", method = RequestMethod. )
-//    public String processEditForm(int cheeseId, String name, String description) {
-//
-//    }
 }
