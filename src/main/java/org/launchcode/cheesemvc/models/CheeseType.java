@@ -3,7 +3,7 @@ package org.launchcode.cheesemvc.models;
 public enum CheeseType {
 
     HARD ("Hard"),
-    SOFT ("Name"),
+    SOFT ("Soft"),
     FAKE ("Fake");
 
     private final String name;
