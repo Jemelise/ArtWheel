@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("cheese")
@@ -55,6 +56,21 @@ public class CheeseController {
         for(int cheeseId : cheeseIds) {
             CheeseData.remove(cheeseId);
         }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int cheeseId) {
+        Cheese c = CheeseData.getById(cheeseId);
+        model.addAttribute("cheese", c);
+        return "cheese/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(int cheeseId, String nameOfCheese, String descriptionOfCheese) {
+        Cheese c = CheeseData.getById(cheeseId);
+        c.setNameOfCheese(nameOfCheese);
+        c.setDescriptionOfCheese(descriptionOfCheese);
         return "redirect:";
     }
 }
