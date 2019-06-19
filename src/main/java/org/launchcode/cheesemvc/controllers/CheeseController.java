@@ -79,6 +79,8 @@ public class CheeseController {
 
         c.setNameOfCheese(nameOfCheese);
         c.setDescriptionOfCheese(descriptionOfCheese);
+
+        cheeseDao.save(c);
         return "redirect:";
     }
 }
