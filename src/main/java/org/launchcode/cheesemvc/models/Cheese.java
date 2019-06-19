@@ -1,8 +1,8 @@
 package org.launchcode.cheesemvc.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import groovy.lang.Category;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,7 +19,9 @@ public class Cheese {
     @NotNull
     @Size(min=1, message="Description must not be empty")
     private String descriptionOfCheese;
-    private CheeseType typeOfCheese;
+
+    @ManyToOne
+    private Category category;
 
     public Cheese(String nameOfCheese, String descriptionOfCheese) {
         this.nameOfCheese = nameOfCheese;
@@ -49,12 +51,11 @@ public class Cheese {
         this.descriptionOfCheese = aDescriptionOfCheese;
     }
 
-
-    public CheeseType getTypeOfCheese() {
-        return typeOfCheese;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setTypeOfCheese(CheeseType typeOfCheese) {
-        this.typeOfCheese = typeOfCheese;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
