@@ -1,6 +1,7 @@
 package org.launchcode.cheesemvc.models.data;
 
-import groovy.lang.Category;
+
+import org.launchcode.cheesemvc.models.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

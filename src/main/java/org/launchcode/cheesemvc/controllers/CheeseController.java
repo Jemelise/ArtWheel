@@ -2,6 +2,9 @@ package org.launchcode.cheesemvc.controllers;
 
 
 
+
+
+import org.launchcode.cheesemvc.models.Category;
 import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.data.CategoryDao;
 import org.launchcode.cheesemvc.models.data.CheeseDao;
@@ -46,13 +49,13 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese, Errors errors, @RequestParam int categoryId, Model model) {
+    public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese, Errors errors, @RequestParam int category, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
             model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
-        Category cat = categoryDao.findOne(categoryId);
+        Category cat = categoryDao.findOne(category);
         newCheese.setCategory(cat);
         cheeseDao.save(newCheese);
         return "redirect:";
@@ -92,13 +95,13 @@ public class CheeseController {
         return "redirect:";
     }
 
-    @RequestMapping(value="category", method = RequestMethod.GET)
-    public String category(Model model, @RequestParam int id) {
-
-        Category cat = categoryDao.findOne(id);
-        List<Cheese> cheeses = cat.getCheeses();
-        model.addAttribute("cheeses", cheeses);
-        model.addAttribute("title", "Cheeses in Category: " + cat.getName()));
-        return "cheese/index";
-    }
+//    @RequestMapping(value="category", method = RequestMethod.GET)
+//    public String category(Model model, @RequestParam int id) {
+//
+//        Category cat = categoryDao.findOne(id);
+//        List<Cheese> cheeses = cat.getCheeses();
+//        model.addAttribute("cheeses", cheeses);
+//        model.addAttribute("title", "Cheeses in Category: " + cat.getName()));
+//        return "cheese/index";
+//    }
 }

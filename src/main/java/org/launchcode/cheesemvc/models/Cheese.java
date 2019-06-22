@@ -1,6 +1,6 @@
 package org.launchcode.cheesemvc.models;
 
-import groovy.lang.Category;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
