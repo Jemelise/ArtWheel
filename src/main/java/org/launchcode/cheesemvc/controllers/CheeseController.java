@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -50,7 +51,7 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese, Errors errors, @RequestParam int category, Model model) {
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
             model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
@@ -71,7 +72,7 @@ public class CheeseController {
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String displayRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
-        for(int cheeseId : cheeseIds) {
+        for (int cheeseId : cheeseIds) {
             cheeseDao.delete(cheeseId);
         }
         return "redirect:";
@@ -95,4 +96,24 @@ public class CheeseController {
         return "redirect:";
     }
 
+    @RequestMapping(value = "category/{id}", method = RequestMethod.GET)
+    public String category(Model model, @PathVariable int id) {
+
+        Iterable<Cheese> listofcheeses = cheeseDao.findAll();
+        List<Cheese> catcheese = new ArrayList<Cheese>();
+        Category category = categoryDao.findOne(id);
+
+        for (Cheese cheese : listofcheeses) {
+
+            int x = cheese.getCategory().getId();
+
+            if (id == x) {
+                catcheese.add(cheese);
+            }
+
+        }
+        model.addAttribute("cheeses", catcheese);
+        model.addAttribute("title", "Cheeses that are " + category.getName());
+        return "cheese/index";
+    }
 }
