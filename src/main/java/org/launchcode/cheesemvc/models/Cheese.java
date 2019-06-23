@@ -5,6 +5,7 @@ package org.launchcode.cheesemvc.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Cheese {
@@ -22,6 +23,9 @@ public class Cheese {
 
     @ManyToOne
     private Category category;
+
+    @ManyToMany(mappedBy = "cheeses")
+    private List<Menu> menus;
 
     public Cheese(String nameOfCheese, String descriptionOfCheese) {
         this.nameOfCheese = nameOfCheese;

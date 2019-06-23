@@ -30,7 +30,7 @@ public class CheeseController {
     private CheeseDao cheeseDao;
 
     @Autowired
-    CategoryDao categoryDao;
+    private CategoryDao categoryDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -95,13 +95,4 @@ public class CheeseController {
         return "redirect:";
     }
 
-//    @RequestMapping(value="category", method = RequestMethod.GET)
-//    public String category(Model model, @RequestParam int id) {
-//
-//        Category cat = categoryDao.findOne(id);
-//        List<Cheese> cheeses = cat.getCheeses();
-//        model.addAttribute("cheeses", cheeses);
-//        model.addAttribute("title", "Cheeses in Category: " + cat.getName()));
-//        return "cheese/index";
-//    }
 }
