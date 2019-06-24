@@ -1,5 +1,7 @@
 package org.launchcode.cheesemvc.models;
 
+import org.springframework.data.repository.cdi.Eager;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,6 +34,10 @@ public class Cheese {
     }
 
     public Cheese() {
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
     }
 
     public int getId() {

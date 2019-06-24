@@ -52,4 +52,6 @@ public class Menu {
     public List<Cheese> getCheeses() {
         return cheeses;
     }
+
+    public void removeCheese(Cheese omOm) { this.cheeses.remove(omOm);}
 }

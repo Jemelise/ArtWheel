@@ -9,4 +9,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface MenuDao extends CrudRepository<Menu, Integer> {
+
 }
