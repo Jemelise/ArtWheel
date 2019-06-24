@@ -44,7 +44,7 @@ public class MenuController {
     public String add(Model model, @ModelAttribute @Valid Menu menu, Errors errors) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Add Menu");
-            model.addAttribute(new Menu());
+            model.addAttribute("menu", menu);
             return "menu/add";
         }
         menuDao.save(menu);
@@ -73,7 +73,7 @@ public class MenuController {
     @RequestMapping(value ="add-item/{id}", method = RequestMethod.POST)
     public String addItem(Model model, @PathVariable int id, @Valid AddMenuItemForm addMenuItemForm, Errors errors) {
         if(errors.hasErrors()) {
-            model.addAttribute("title", "Add Menu");
+            model.addAttribute("title", "Add Item");
             model.addAttribute(new AddMenuItemForm());
             return "menu/add-item";
         }

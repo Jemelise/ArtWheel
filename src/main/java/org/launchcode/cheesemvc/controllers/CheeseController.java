@@ -5,6 +5,7 @@ import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.data.CategoryDao;
 import org.launchcode.cheesemvc.models.data.CheeseDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +70,12 @@ public class CheeseController {
     public String displayRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
         for (int cheeseId : cheeseIds) {
-            cheeseDao.delete(cheeseId);
+            try {
+                cheeseDao.delete(cheeseId);
+            }
+            catch (DataIntegrityViolationException e) {
+                return "redirect:/cheese/remove";
+            }
         }
         return "redirect:";
     }
