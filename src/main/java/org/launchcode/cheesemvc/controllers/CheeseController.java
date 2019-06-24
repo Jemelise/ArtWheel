@@ -1,9 +1,5 @@
 package org.launchcode.cheesemvc.controllers;
 
-
-
-
-
 import org.launchcode.cheesemvc.models.Category;
 import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.data.CategoryDao;
@@ -35,7 +31,6 @@ public class CheeseController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
-
         model.addAttribute("cheeses", cheeseDao.findAll());
         model.addAttribute("title", "My Cheeses");
         return "cheese/index";
@@ -104,16 +99,14 @@ public class CheeseController {
         Category category = categoryDao.findOne(id);
 
         for (Cheese cheese : listofcheeses) {
-
             int x = cheese.getCategory().getId();
 
             if (id == x) {
                 catcheese.add(cheese);
             }
-
         }
         model.addAttribute("cheeses", catcheese);
-        model.addAttribute("title", "Cheeses that are " + category.getName());
+        model.addAttribute("title", "Cheeses That Are " + category.getName());
         return "cheese/index";
     }
 }

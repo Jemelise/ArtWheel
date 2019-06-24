@@ -16,7 +16,7 @@ public class Menu {
     private int id;
 
     @NotNull
-    @Size(min=3, max=15)
+    @Size(min=1, message="Must not be empty")
     private String name;
 
     @ManyToMany
