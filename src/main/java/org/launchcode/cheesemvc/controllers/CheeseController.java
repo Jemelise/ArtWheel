@@ -2,10 +2,8 @@ package org.launchcode.cheesemvc.controllers;
 
 import org.launchcode.cheesemvc.models.Category;
 import org.launchcode.cheesemvc.models.Cheese;
-import org.launchcode.cheesemvc.models.Menu;
 import org.launchcode.cheesemvc.models.data.CategoryDao;
 import org.launchcode.cheesemvc.models.data.CheeseDao;
-import org.launchcode.cheesemvc.models.data.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -32,8 +30,6 @@ public class CheeseController {
     @Autowired
     private CategoryDao categoryDao;
 
-    @Autowired
-    private MenuDao menuDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -74,16 +70,10 @@ public class CheeseController {
     public String displayRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
         for (int cheeseId : cheeseIds) {
-            try {
-                for(Menu menuItem : cheeseDao.findOne(cheeseId).getMenus()){
-                    menuItem.removeCheese(cheeseDao.findOne(cheeseId));
-                    menuDao.save(menuItem);
-                }
-                cheeseDao.delete(cheeseId);
-            }
-            catch (DataIntegrityViolationException e) {
-                return "redirect:/cheese/remove";
-            }
+
+            cheeseDao.delete(cheeseId);
+
+            return "redirect:/cheese/remove";
         }
         return "redirect:";
     }
