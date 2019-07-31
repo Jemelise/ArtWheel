@@ -19,7 +19,7 @@ public class Category {
 
     @OneToMany
     @JoinColumn(name = "category_id")
-    private List<Cheese> cheeses = new ArrayList<>();
+    private List<Artwork> artworks = new ArrayList<>();
 
     public Category() {
 
@@ -41,8 +41,8 @@ public class Category {
         this.name = name;
     }
 
-    public List<Cheese> getCheeses() {
-        return cheeses;
+    public List<Artwork> getCheeses() {
+        return artworks;
     }
 
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<p th:unless="${artworks} and ${artworks.size()}"> no artwork </p>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Size</th>
+<!--        <th>Price</th>-->
+        <th>Category</th>
+        <th>Edit</th>
+
+        <hr/>
+
+    </tr>
+    <tr th:each="artwork : ${artworks}">
+        <td th:text="${artwork.getNameOfArtwork()}">Key</td>
+        <td th:text="${artwork.getSizeOfArtwork()}">Value</td>
+        <td th:text="${artwork.category.name}"></td>
+<!--        <td><a th:href="@{'/artwork/edit/' + ${artwork.id}}">edit</a></td>-->
+    </tr>
+</table>
+
+<hr/>
+
+<p>
+    <a href="/artwork/add">Add</a>
+</p>
+
+</body>
+</html>

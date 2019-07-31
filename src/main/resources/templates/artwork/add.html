@@ -8,16 +8,16 @@
 
 <hr/>
 
-<form method="post" style="max-width:600px;" th:object="${cheese}">
+<form method="post" style="max-width:600px;" th:object="${artwork}">
     <div class="form-group">
-        <label th:for="name">Name:</label>
-        <input class="form-control" th:field="*{nameOfCheese}" />
-        <span th:errors="*{nameOfCheese}" class="error"></span>
+        <label th:for="name">Title:</label>
+        <input class="form-control" th:field="*{nameOfArtwork}" />
+        <span th:errors="*{nameOfArtwork}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="description">Description:</label>
-        <input class="form-control" th:field="*{descriptionOfCheese}" />
-        <span th:errors="*{descriptionOfCheese}" class="error"></span>
+        <label th:for="size">Size:</label>
+        <input class="form-control" th:field="*{sizeOfArtwork}" />
+        <span th:errors="*{sizeOfArtwork}" class="error"></span>
     </div>
 
     <div class="form-group">
@@ -28,7 +28,7 @@
                     th:value="${category.id}"></option>
         </select>
     </div>
-    <input type="submit" value="Add Cheese" />
+    <input type="submit" value="Add Artwork" />
 </form>
 
 </body>

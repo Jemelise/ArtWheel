@@ -3,7 +3,6 @@ package org.launchcode.cheesemvc.controllers;
 
 import org.launchcode.cheesemvc.models.Artwork;
 import org.launchcode.cheesemvc.models.Category;
-import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.data.ArtworkDao;
 import org.launchcode.cheesemvc.models.data.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
