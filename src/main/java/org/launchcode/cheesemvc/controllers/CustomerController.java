@@ -41,4 +41,20 @@ public class CustomerController {
         return "redirect:";
     }
 
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveCustomerForm(Model model) {
+        model.addAttribute("customers", customerDao.findAll());
+        model.addAttribute("title", "Remove Customer");
+        return "customer/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String displayRemoveCustomerForm(@RequestParam int[] customerIds) {
+
+        for (int customerId : customerIds) {
+            customerDao.delete(customerId);
+        }
+        return "redirect:";
+    }
+
 }
