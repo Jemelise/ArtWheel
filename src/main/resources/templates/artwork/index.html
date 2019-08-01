@@ -10,8 +10,8 @@
     <tr>
         <th>Title</th>
         <th>Size</th>
-<!--        <th>Price</th>-->
         <th>Category</th>
+        <th>Price</th>
         <th>Edit</th>
 
         <hr/>
@@ -21,6 +21,7 @@
         <td th:text="${artwork.getNameOfArtwork()}">Key</td>
         <td th:text="${artwork.getSizeOfArtwork()}">Value</td>
         <td th:text="${artwork.category.name}"></td>
+        <td th:text="${artwork.getPriceOfArtwork()}">Value</td>
         <td><a th:href="@{'/artwork/edit/' + ${artwork.id}}">edit</a></td>
     </tr>
 </table>

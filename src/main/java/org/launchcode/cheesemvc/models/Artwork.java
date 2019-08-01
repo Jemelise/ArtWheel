@@ -12,19 +12,24 @@ public class Artwork {
     private int id;
 
     @NotNull
-    @Size(min=3, max=15)
+    @Size(min=3, max=40)
     private String nameOfArtwork;
 
     @NotNull
     @Size(min=1, message="Size must not be empty")
     private String sizeOfArtwork;
 
+    @NotNull
+    @Size(min=1, message="Price must be determined")
+    private String priceOfArtwork;
+
     @ManyToOne
     private Category category;
 
-    public Artwork(String nameOfArtwork, String sizeOfArtwork) {
+    public Artwork(String nameOfArtwork, String sizeOfArtwork, String priceOfArtwork) {
         this.nameOfArtwork = nameOfArtwork;
         this.sizeOfArtwork = sizeOfArtwork;
+        this.priceOfArtwork = priceOfArtwork;
     }
 
     public Artwork() {
@@ -57,5 +62,13 @@ public class Artwork {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getPriceOfArtwork() {
+        return priceOfArtwork;
+    }
+
+    public void setPriceOfArtwork(String priceOfArtwork) {
+        this.priceOfArtwork = priceOfArtwork;
     }
 }

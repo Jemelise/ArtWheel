@@ -18,7 +18,7 @@
     <tr th:each="customer : ${customers}">
         <td th:text="${customer.getNameOfCustomer()}">Key</td>
         <td th:text="${customer.getEmailOfCustomer()}">Value</td>
-<!--        <td><a th:href="@{'/artwork/edit/' + ${artwork.id}}">edit</a></td>-->
+        <td><a th:href="@{'/customer/edit/' + ${customer.id}}">edit</a></td>
     </tr>
 </table>
 

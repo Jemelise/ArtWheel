@@ -28,6 +28,13 @@
                     th:value="${category.id}"></option>
         </select>
     </div>
+
+    <div class="form-group">
+        <label th:for="price">Price:</label>
+        <input class="form-control" th:field="*{priceOfArtwork}" />
+        <span th:errors="*{priceOfArtwork}" class="error"></span>
+    </div>
+
     <input type="submit" value="Add Artwork" />
 </form>
 

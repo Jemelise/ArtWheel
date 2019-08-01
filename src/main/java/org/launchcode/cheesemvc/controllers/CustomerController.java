@@ -1,5 +1,6 @@
 package org.launchcode.cheesemvc.controllers;
 
+import org.launchcode.cheesemvc.models.Artwork;
 import org.launchcode.cheesemvc.models.Customer;
 import org.launchcode.cheesemvc.models.data.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,24 @@ public class CustomerController {
         for (int customerId : customerIds) {
             customerDao.delete(customerId);
         }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{customerId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int customerId) {
+        Customer c = customerDao.findOne(customerId);
+        model.addAttribute("customer", c);
+        return "customer/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(int customerId, String nameOfCustomer, String emailOfCustomer) {
+        Customer c = customerDao.findOne(customerId);
+
+        c.setNameOfCustomer(nameOfCustomer);
+        c.setEmailOfCustomer(emailOfCustomer);
+
+        customerDao.save(c);
         return "redirect:";
     }
 

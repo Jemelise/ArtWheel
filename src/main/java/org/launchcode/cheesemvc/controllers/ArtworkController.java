@@ -27,7 +27,7 @@ public class ArtworkController {
     @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("artworks", artworkDao.findAll());
-        model.addAttribute("title", "My Artworks");
+        model.addAttribute("title", "My Artwork");
         return "artwork/index";
     }
 
@@ -76,11 +76,12 @@ public class ArtworkController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String processEditForm(int artworkId, String nameOfArtwork, String sizeOfArtwork) {
+    public String processEditForm(int artworkId, String nameOfArtwork, String sizeOfArtwork, String priceOfArtwork) {
         Artwork c = artworkDao.findOne(artworkId);
 
         c.setNameOfArtwork(nameOfArtwork);
         c.setSizeOfArtwork(sizeOfArtwork);
+        c.setPriceOfArtwork(priceOfArtwork);
 
         artworkDao.save(c);
         return "redirect:";
