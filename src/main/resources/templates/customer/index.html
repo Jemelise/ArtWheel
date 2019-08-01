@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<p th:unless="${customers} and ${customers.size()}"> no customers </p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+
+        <hr/>
+
+    </tr>
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.getNameOfCustomer()}">Key</td>
+        <td th:text="${customer.getEmailOfCustomer()}">Value</td>
+<!--        <td><a th:href="@{'/artwork/edit/' + ${artwork.id}}">edit</a></td>-->
+    </tr>
+</table>
+
+<hr/>
+
+<p>
+    <a href="/customer/add">Add</a> |
+<!--    <a href="/artwork/remove">Remove</a>-->
+</p>
+
+</body>
+</html>
