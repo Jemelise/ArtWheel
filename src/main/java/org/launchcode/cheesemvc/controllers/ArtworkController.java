@@ -1,6 +1,5 @@
 package org.launchcode.cheesemvc.controllers;
 
-
 import org.launchcode.cheesemvc.models.Artwork;
 import org.launchcode.cheesemvc.models.Category;
 import org.launchcode.cheesemvc.models.data.ArtworkDao;
