@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<h2 th:text="'Edit Artwork ' + ${artwork.nameOfArtwork} + '(id=' + ${artworkId}+')'"></h2>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<hr/>
+
+<form method="post" style="max-width:600px;" action="/artwork/edit">
+    <div class="form-group">
+        <label th:for="Name">Name</label>
+        <input class="form-control" th:value="${artwork.nameOfArtwork}" name="nameOfArtwork" />
+    </div>
+    <div class="form-group">
+        <label th:for="Name">Size</label>
+        <input class="form-control" th:value="${artwork.sizeOfArtwork}" name="sizeOfArtwork" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Edit Artwork" />
+        <input type="hidden" th:value="${artwork.id}" name="artworkId" />
+    </div>
+</form>
+</body>
+</html>

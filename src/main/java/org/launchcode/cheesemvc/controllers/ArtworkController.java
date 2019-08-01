@@ -9,12 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("artwork")
@@ -68,5 +67,42 @@ public class ArtworkController {
             artworkDao.delete(artworkId);
         }
             return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{artworkId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int artworkId) {
+        Artwork c = artworkDao.findOne(artworkId);
+        model.addAttribute("artwork", c);
+        return "artwork/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(int artworkId, String nameOfArtwork, String sizeOfArtwork) {
+        Artwork c = artworkDao.findOne(artworkId);
+
+        c.setNameOfArtwork(nameOfArtwork);
+        c.setSizeOfArtwork(sizeOfArtwork);
+
+        artworkDao.save(c);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "category/{id}", method = RequestMethod.GET)
+    public String category(Model model, @PathVariable int id) {
+
+        Iterable<Artwork> listofartworks = artworkDao.findAll();
+        List<Artwork> catartwork = new ArrayList<Artwork>();
+        Category category = categoryDao.findOne(id);
+
+        for (Artwork artwork : listofartworks) {
+            int x = artwork.getCategory().getId();
+
+            if (id == x) {
+                catartwork.add(artwork);
+            }
+        }
+        model.addAttribute("artworks", catartwork);
+        model.addAttribute("title", "Artworks That Are " + category.getName());
+        return "artwork/index";
     }
 }
