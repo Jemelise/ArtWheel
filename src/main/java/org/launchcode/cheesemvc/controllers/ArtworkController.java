@@ -53,4 +53,20 @@ public class ArtworkController {
         artworkDao.save(newArtwork);
         return "redirect:";
     }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveArtworkForm(Model model) {
+        model.addAttribute("artworks", artworkDao.findAll());
+        model.addAttribute("title", "Remove Artwork");
+        return "artwork/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String displayRemoveArtworkForm(@RequestParam int[] artworkIds) {
+
+        for (int artworkId : artworkIds) {
+            artworkDao.delete(artworkId);
+        }
+            return "redirect:";
+    }
 }
