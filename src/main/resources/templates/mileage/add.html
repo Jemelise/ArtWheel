@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<hr/>
+
+<form method="post" style="max-width:600px;" th:object="${mileage}">
+    <div class="form-group">
+        <label th:for="name">Name of Event:</label>
+        <input class="form-control" th:field="*{eventOfMileage}" />
+        <span th:errors="*{eventOfMileage}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="size">Distance:</label>
+        <input class="form-control" th:field="*{numberOfMileage}" />
+        <span th:errors="*{numberOfMileage}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Mileage" />
+</form>
+
+</body>
+</html>
