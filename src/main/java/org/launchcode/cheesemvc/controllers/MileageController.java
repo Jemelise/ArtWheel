@@ -1,5 +1,7 @@
 package org.launchcode.cheesemvc.controllers;
 
+import org.launchcode.cheesemvc.models.Artwork;
+import org.launchcode.cheesemvc.models.Category;
 import org.launchcode.cheesemvc.models.Mileage;
 import org.launchcode.cheesemvc.models.data.MileageDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("mileage")
