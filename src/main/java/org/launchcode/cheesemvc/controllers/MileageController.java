@@ -41,4 +41,38 @@ public class MileageController {
         return "redirect:";
     }
 
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveMlieageForm(Model model) {
+        model.addAttribute("miles", mileageDao.findAll());
+        model.addAttribute("title", "Remove Mileage");
+        return "mileage/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String displayRemoveMileageForm(@RequestParam int[] mileageIds) {
+
+        for (int mileageId : mileageIds) {
+            mileageDao.delete(mileageId);
+        }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{mileageId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int mileageId) {
+        Mileage c = mileageDao.findOne(mileageId);
+        model.addAttribute("mileage", c);
+        return "mileage/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(int mileageId, String eventOfMileage, String numberOfMileage) {
+        Mileage c = mileageDao.findOne(mileageId);
+
+        c.setEventOfMileage(eventOfMileage);
+        c.setNumberOfMileage(numberOfMileage);
+
+        mileageDao.save(c);
+        return "redirect:";
+    }
+
 }

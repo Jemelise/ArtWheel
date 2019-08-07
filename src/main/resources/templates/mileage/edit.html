@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<h2 th:text="'Edit Mileage ' + ${mileage.eventOfMileage} + '(id=' + ${mileageId}+')'"></h2>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<hr/>
+
+<form method="post" style="max-width:600px;" action="/mileage/edit">
+    <div class="form-group">
+        <label th:for="Name">Name of Event</label>
+        <input class="form-control" th:value="${mileage.eventOfMileage}" name="eventOfMileage" />
+    </div>
+    <div class="form-group">
+        <label th:for="Name">Distance</label>
+        <input class="form-control" th:value="${mileage.numberOfMileage}" name="numberOfMileage" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Edit Mileage" />
+        <input type="hidden" th:value="${mileage.id}" name="mileageId" />
+    </div>
+</form>
+</body>
+</html>

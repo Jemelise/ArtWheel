@@ -10,7 +10,7 @@
     <tr>
         <th>Event</th>
         <th>Distance</th>
-<!--        <th>Edit</th>-->
+        <th>Edit</th>
 
         <hr/>
 
@@ -18,15 +18,15 @@
     <tr th:each="mileage : ${miles}">
         <td th:text="${mileage.getEventOfMileage()}">Key</td>
         <td th:text="${mileage.getNumberOfMileage()}">Value</td>
-<!--        <td><a th:href="@{'/mileage/edit/' + ${mileage.id}}">edit</a></td>-->
+        <td><a th:href="@{'/mileage/edit/' + ${mileage.id}}">edit</a></td>
     </tr>
 </table>
 
 <hr/>
 
 <p>
-    <a href="/mileage/add">Add</a>
-<!--    <a href="/mileage/remove">Remove</a>-->
+    <a href="/mileage/add">Add</a> |
+    <a href="/mileage/remove">Remove</a>
 </p>
 
 </body>
