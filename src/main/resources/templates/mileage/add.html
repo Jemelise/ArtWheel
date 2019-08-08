@@ -10,9 +10,12 @@
 
 <form method="post" style="max-width:600px;" th:object="${mileage}">
     <div class="form-group">
-        <label th:for="name">Name of Event:</label>
-        <input class="form-control" th:field="*{eventOfMileage}" />
-        <span th:errors="*{eventOfMileage}" class="error"></span>
+        <label th:for="type">Name of Event:</label>
+        <select th:field="*{event}">
+            <option th:each="event : ${events}"
+                    th:text="${event.name}"
+                    th:value="${event.id}"></option>
+        </select>
     </div>
     <div class="form-group">
         <label th:for="size">Distance:</label>

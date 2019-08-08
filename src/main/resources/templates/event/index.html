@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
-<h1 th:text="${title}">Default Title</h1>
-<nav th:replace="fragments :: navigation"></nav>
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+        <h1 th:text="${title}">Default Title</h1>
+            <nav th:replace="fragments :: navigation"></nav>
 
-<hr/>
+        <hr/>
 
-<p th:unless="${events} and ${events.size()}">no events</p>
+        <p th:unless="${events} and ${events.size()}">no events</p>
 
-<ul th:each="event : ${events}">
-    <li ><a th:href="@{'/event/' + ${event.id}}" th:text="${event.getName()}"></a></li>
-</ul>
+        <ul th:each="event : ${events}">
+            <li ><a th:href="@{'/mileage/event/' + ${event.id}}" th:text="${event.getName()}"></a></li>
+        </ul>
 
-<hr/>
+    <hr/>
 
-<a href="/event/add">Add Event</a>
+    <a href="/event/add">Add Event</a>
 
-</body>
+    </body>
 </html>

@@ -17,6 +17,10 @@ public class Event {
     @Size(min=1, message="Must not be empty")
     private String name;
 
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    private List<Mileage> miles = new ArrayList<>();
+
     public Event() {
 
     }
@@ -37,6 +41,9 @@ public class Event {
         this.name = name;
     }
 
+    public List<Mileage> getMiles() {
+        return miles;
+    }
 }
 
 

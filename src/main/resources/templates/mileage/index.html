@@ -16,7 +16,7 @@
 
     </tr>
     <tr th:each="mileage : ${miles}">
-        <td th:text="${mileage.getEventOfMileage()}">Key</td>
+        <td th:text="${mileage.event.name}"></td>
         <td th:text="${mileage.getNumberOfMileage()}">Value</td>
         <td><a th:href="@{'/mileage/edit/' + ${mileage.id}}">edit</a></td>
     </tr>

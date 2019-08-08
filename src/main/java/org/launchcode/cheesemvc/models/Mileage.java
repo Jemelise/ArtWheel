@@ -19,6 +19,9 @@ public class Mileage {
     @Size(min=1, message="Email must not be empty")
     private String numberOfMileage;
 
+    @ManyToOne
+    private Event event;
+
 
     public Mileage(String eventOfMileage, String numberOfMileage) {
         this.eventOfMileage = eventOfMileage;
@@ -47,6 +50,14 @@ public class Mileage {
 
     public void setNumberOfMileage(String numberOfMileage) {
         this.numberOfMileage = numberOfMileage;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }
 

@@ -41,7 +41,7 @@ public class Category {
         this.name = name;
     }
 
-    public List<Artwork> getCheeses() {
+    public List<Artwork> getArtworks() {
         return artworks;
     }
 
