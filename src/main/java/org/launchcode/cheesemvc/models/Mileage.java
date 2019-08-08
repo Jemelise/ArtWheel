@@ -12,10 +12,6 @@ public class Mileage {
     private int id;
 
     @NotNull
-    @Size(min=3, max=40)
-    private String eventOfMileage;
-
-    @NotNull
     @Size(min=1, message="Email must not be empty")
     private String numberOfMileage;
 
@@ -23,8 +19,7 @@ public class Mileage {
     private Event event;
 
 
-    public Mileage(String eventOfMileage, String numberOfMileage) {
-        this.eventOfMileage = eventOfMileage;
+    public Mileage(String numberOfMileage) {
         this.numberOfMileage = numberOfMileage;
     }
 
@@ -36,13 +31,7 @@ public class Mileage {
         return id;
     }
 
-    public String getEventOfMileage() {
-        return eventOfMileage;
-    }
 
-    public void setEventOfMileage(String eventOfMileage) {
-        this.eventOfMileage = eventOfMileage;
-    }
 
     public String getNumberOfMileage() {
         return numberOfMileage;

@@ -77,10 +77,9 @@ public class MileageController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String processEditForm(int mileageId, String eventOfMileage, String numberOfMileage) {
+    public String processEditForm(int mileageId, String numberOfMileage) {
         Mileage c = mileageDao.findOne(mileageId);
 
-        c.setEventOfMileage(eventOfMileage);
         c.setNumberOfMileage(numberOfMileage);
 
         mileageDao.save(c);

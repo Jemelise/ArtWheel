@@ -10,7 +10,7 @@
         <p th:unless="${events} and ${events.size()}">no events</p>
 
         <ul th:each="event : ${events}">
-            <li ><a th:href="@{'/mileage/event/' + ${event.id}}" th:text="${event.getName()}"></a></li>
+            <li th:text="${event.getName()}"></li>
         </ul>
 
     <hr/>

@@ -11,7 +11,7 @@
 <form method="post">
     <div th:each="mileage : ${miles}" class="checkbox">
         <input type="checkbox" name="mileageIds" th:value="${mileage.id}" th:id="${mileage.id}"/>
-        <label th:for="${mileage.id}" th:text="${mileage.eventOfMileage}"></label>
+        <label th:for="${mileage.id}" th:text="${mileage.event.name}"></label>
         <br/>
     </div>
     <input type="submit" value="Remove"/><br/>
