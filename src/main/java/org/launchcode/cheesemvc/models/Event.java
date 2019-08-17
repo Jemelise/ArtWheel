@@ -17,6 +17,10 @@ public class Event {
     @Size(min=1, message="Must not be empty")
     private String name;
 
+    @NotNull
+    @Size(min=1, message="Must not be empty")
+    private String location;
+
     @OneToMany
     @JoinColumn(name = "event_id")
     private List<Mileage> miles = new ArrayList<>();
@@ -39,6 +43,14 @@ public class Event {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<Mileage> getMiles() {

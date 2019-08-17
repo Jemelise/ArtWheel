@@ -10,7 +10,7 @@
         <p th:unless="${events} and ${events.size()}">no events</p>
 
         <ul th:each="event : ${events}">
-            <li th:text="${event.getName()}"></li>
+            <li th:text="${event.getName()} + ' | ' + ${event.getLocation()}"></li>
         </ul>
 
     <hr/>
