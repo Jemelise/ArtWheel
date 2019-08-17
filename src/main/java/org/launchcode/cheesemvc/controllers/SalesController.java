@@ -65,7 +65,7 @@ public class SalesController {
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String processEditForm(int salesId, String itemOfSale, String dateOfSale, String priceOfSale) {
+    public String processEditForm(int salesId, String itemOfSale, String dateOfSale, Double priceOfSale) {
         Sales c = salesDao.findOne(salesId);
 
         c.setItemOfSale(itemOfSale);

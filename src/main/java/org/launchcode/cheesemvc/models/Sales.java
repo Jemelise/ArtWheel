@@ -21,10 +21,10 @@ public class Sales {
 
     @NotNull
     @Size(min=1, message="Price must be determined")
-    private String priceOfSale;
+    private Double priceOfSale;
 
 
-    public Sales(String itemOfSale, String dateOfSale, String priceOfSale) {
+    public Sales(String itemOfSale, String dateOfSale, Double priceOfSale) {
         this.itemOfSale = itemOfSale;
         this.dateOfSale = dateOfSale;
         this.priceOfSale = priceOfSale;
@@ -54,11 +54,11 @@ public class Sales {
         this.dateOfSale = dateOfSale;
     }
 
-    public String getPriceOfSale() {
+    public Double getPriceOfSale() {
         return priceOfSale;
     }
 
-    public void setPriceOfSale(String priceOfSale) {
+    public void setPriceOfSale(Double priceOfSale) {
         this.priceOfSale = priceOfSale;
     }
 }
