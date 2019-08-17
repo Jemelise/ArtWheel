@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<p th:unless="${miles} and ${miles.size()}"> no mileage </p>
+
+<table class="table">
+    <tr>
+        <th>Event</th>
+        <th>Distance</th>
+        <th>Edit</th>
+
+        <hr/>
+
+    </tr>
+    <tr th:each="mileage : ${miles}">
+        <td th:text="${mileage.event.name}"></td>
+        <td th:text="${mileage.getNumberOfMileage()}">Value</td>
+        <td><a th:href="@{'/mileage/edit/' + ${mileage.id}}">edit</a></td>
+    </tr>
+</table>
+
+<hr/>
+
+<p>
+    <a href="/mileage/add">Add</a> |
+    <a href="/mileage/remove">Remove</a>
+</p>
+
+</body>
+</html>

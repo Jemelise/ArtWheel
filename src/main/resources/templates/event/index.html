@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+        <h1 th:text="${title}">Default Title</h1>
+            <nav th:replace="fragments :: navigation"></nav>
+
+        <hr/>
+
+        <p th:unless="${events} and ${events.size()}">no events</p>
+
+        <ul th:each="event : ${events}">
+            <li th:text="${event.getName()} + ' | ' + ${event.getLocation()}"></li>
+        </ul>
+
+    <hr/>
+
+    <a href="/event/add">Add Event</a>
+
+    </body>
+</html>

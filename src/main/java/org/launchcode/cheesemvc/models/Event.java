@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
+public class Event {
 
     @Id
     @GeneratedValue
@@ -17,15 +17,19 @@ public class Category {
     @Size(min=1, message="Must not be empty")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "category_id")
-    private List<Artwork> artworks = new ArrayList<>();
+    @NotNull
+    @Size(min=1, message="Must not be empty")
+    private String location;
 
-    public Category() {
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    private List<Mileage> miles = new ArrayList<>();
+
+    public Event() {
 
     }
 
-    public Category(String name) {
+    public Event(String name) {
         this.name=name;
     }
 
@@ -41,8 +45,17 @@ public class Category {
         this.name = name;
     }
 
-    public List<Artwork> getArtworks() {
-        return artworks;
+    public String getLocation() {
+        return location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<Mileage> getMiles() {
+        return miles;
+    }
 }
+
+

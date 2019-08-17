@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+<p th:unless="${allsales} and ${allsales.size()}"> no sales </p>
+
+<table class="table">
+    <tr>
+        <th>Item</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <hr/>
+
+    </tr>
+    <tr th:each="sales : ${allsales}">
+        <td th:text="${sales.getItemOfSale()}">Key</td>
+        <td th:text="${sales.getDateOfSale()}">Value</td>
+        <td th:text="${sales.getPriceOfSale()}">Value</td>
+        <td><a th:href="@{'/sales/edit/' + ${sales.id}}">edit</a></td>
+    </tr>
+    <tr>
+        <td><b>Total Sales =</b></td>
+        <td>-----------</td>
+        <td><b th:text="${total}"></b></td>
+        <td></td>
+    </tr>
+</table>
+
+<hr/>
+
+<p>
+    <a href="/sales/add">Add</a> |
+    <a href="/sales/remove">Remove</a>
+</p>
+
+</body>
+</html>

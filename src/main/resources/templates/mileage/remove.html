@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<hr/>
+
+<form method="post">
+    <div th:each="mileage : ${miles}" class="checkbox">
+        <input type="checkbox" name="mileageIds" th:value="${mileage.id}" th:id="${mileage.id}"/>
+        <label th:for="${mileage.id}" th:text="${mileage.event.name}"></label>
+        <br/>
+    </div>
+    <input type="submit" value="Remove"/><br/>
+</form>
+
+</body>
+</html>

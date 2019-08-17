@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<h2 th:text="'Edit Sales ' + ${sales.itemOfSale} + '(id=' + ${salesId}+')'"></h2>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<hr/>
+
+<form method="post" style="max-width:600px;" action="/sales/edit">
+    <div class="form-group">
+        <label th:for="Name">Item</label>
+        <input class="form-control" th:value="${sales.itemOfSale}" name="itemOfSale" />
+    </div>
+    <div class="form-group">
+        <label th:for="Name">Date</label>
+        <input class="form-control" th:value="${sales.dateOfSale}" name="dateOfSale" />
+    </div>
+    <div class="form-group">
+        <label th:for="Name">Price</label>
+        <input class="form-control" th:value="${sales.priceOfSale}" name="priceOfSale" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Edit Sale(s)" />
+        <input type="hidden" th:value="${sales.id}" name="salesId" />
+    </div>
+</form>
+</body>
+</html>
