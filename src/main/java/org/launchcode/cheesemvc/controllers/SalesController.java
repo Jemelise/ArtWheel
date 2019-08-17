@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("sales")
@@ -17,10 +19,26 @@ public class SalesController {
     @Autowired
     private SalesDao salesDao;
 
+    public Double sumOfPriceColumn (Iterable<Sales> listofsales) {
+
+        double totalsales = 0;
+
+        for ( Sales sale : listofsales) {
+            totalsales += sale.getPriceOfSale();
+        }
+        return totalsales;
+    }
+
     @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("allsales", salesDao.findAll());
         model.addAttribute("title", "My Sales");
+
+        Iterable<Sales> listofsales = salesDao.findAll();
+        Double totalsales = sumOfPriceColumn(listofsales);
+
+        model.addAttribute("total", totalsales);
+
         return "sales/index";
     }
 

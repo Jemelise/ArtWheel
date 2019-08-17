@@ -21,6 +21,12 @@
         <td th:text="${sales.getPriceOfSale()}">Value</td>
         <td><a th:href="@{'/sales/edit/' + ${sales.id}}">edit</a></td>
     </tr>
+    <tr>
+        <td><b>Total Sales =</b></td>
+        <td>-----------</td>
+        <td><b th:text="${total}"></b></td>
+        <td></td>
+    </tr>
 </table>
 
 <hr/>
