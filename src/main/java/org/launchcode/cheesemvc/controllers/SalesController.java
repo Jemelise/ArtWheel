@@ -19,7 +19,7 @@ public class SalesController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
-        model.addAttribute("sales", salesDao.findAll());
+        model.addAttribute("allsales", salesDao.findAll());
         model.addAttribute("title", "My Sales");
         return "sales/index";
     }
