@@ -13,7 +13,7 @@
         <label th:for="type">Name of Event:</label>
         <select th:field="*{event}">
             <option th:each="event : ${events}"
-                    th:text="${event.name}"
+                    th:text="${event.name} + ' | '+ ${event.location}"
                     th:value="${event.id}"></option>
         </select>
     </div>

@@ -20,7 +20,6 @@ public class Sales {
     private String dateOfSale;
 
     @NotNull
-    @Size(min=1, message="Price must be determined")
     private Double priceOfSale;
 
 
