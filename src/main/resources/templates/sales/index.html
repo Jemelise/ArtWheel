@@ -11,7 +11,7 @@
         <th>Item</th>
         <th>Date</th>
         <th>Price</th>
-<!--        <th>Edit</th>-->
+        <th>Edit</th>
         <hr/>
 
     </tr>
@@ -19,7 +19,7 @@
         <td th:text="${sales.getItemOfSale()}">Key</td>
         <td th:text="${sales.getDateOfSale()}">Value</td>
         <td th:text="${sales.getPriceOfSale()}">Value</td>
-<!--        <td><a th:href="@{'/sales/edit/' + ${sales.id}}">edit</a></td>-->
+        <td><a th:href="@{'/sales/edit/' + ${sales.id}}">edit</a></td>
     </tr>
 </table>
 
@@ -27,7 +27,7 @@
 
 <p>
     <a href="/sales/add">Add</a> |
-<!--    <a href="/sales/remove">Remove</a>-->
+    <a href="/sales/remove">Remove</a>
 </p>
 
 </body>

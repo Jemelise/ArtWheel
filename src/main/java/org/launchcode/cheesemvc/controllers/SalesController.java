@@ -37,8 +37,42 @@ public class SalesController {
             model.addAttribute("title", "Add Sales");
             return "sales/add";
         }
-
         salesDao.save(newSales);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveSalesForm(Model model) {
+        model.addAttribute("allsales", salesDao.findAll());
+        model.addAttribute("title", "Remove Sale(s)");
+        return "sales/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String displayRemoveSalesForm(@RequestParam int[] salesIds) {
+
+        for (int salesId : salesIds) {
+            salesDao.delete(salesId);
+        }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "edit/{salesId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int salesId) {
+        Sales c = salesDao.findOne(salesId);
+        model.addAttribute("sales", c);
+        return "sales/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(int salesId, String itemOfSale, String dateOfSale, String priceOfSale) {
+        Sales c = salesDao.findOne(salesId);
+
+        c.setItemOfSale(itemOfSale);
+        c.setDateOfSale(dateOfSale);
+        c.setPriceOfSale(priceOfSale);
+
+        salesDao.save(c);
         return "redirect:";
     }
 }
